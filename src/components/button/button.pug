@@ -1,0 +1,26 @@
+mixin button( {text = 'click me', theme, type = 'button', name, value, url = 'mock.html', target = '_blank', rel = 'noopener noreferrer', hasArrow, hasDropdownArrow} = {} )
+  -
+    const themeModifiers = {
+      filled: '_theme_filled',
+      textual: '_theme_textual',
+    }
+    const arrowModifier = hasArrow && '_with-arrow'
+    const dropdownArrowModifier = hasDropdownArrow && '_with-dropdown-arrow'
+    const classes = [
+      themeModifiers[theme],
+      arrowModifier,
+      dropdownArrowModifier
+    ]
+    const isLink = type === 'link'
+    const possibleAttributes = {
+      type: isLink ? false : type,
+      name: name,
+      value: value,
+      href: isLink && url,
+      target: isLink && target,
+      rel: isLink && rel,
+    }
+    const tag = isLink ? 'a' : 'button'
+
+  #{tag}.button(class = classes)&attributes(possibleAttributes)
+    .button__text= text

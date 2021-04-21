@@ -1,0 +1,118 @@
+@import '../../theme/scss/variables.scss';
+@import '../../theme/scss/mixins/material-icons.scss';
+@import '../../theme/scss/mixins/titles.scss';
+
+.text-field {
+  $r: &;
+
+  &._with-button {
+    #{$r}__container {
+      padding-right: 0;
+    }
+  }
+
+  &._with-dropdown-arrow {
+    #{$r}__container {
+      padding-right: 24px;
+
+      @media (min-width: 340px) {
+        padding-right: 34px;
+      }
+
+      &::before {
+        display: inline-block;
+      }
+    }
+  }
+
+  &._expanded {
+    #{$r}__container {
+      border: 1px solid $color-first;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom: none;
+    }
+  }
+
+  &__title {
+    @include h3;
+    margin-bottom: 5px;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    max-width: 320px;
+    width: 100%;
+    height: 44px;
+    border: 1px solid $color-first-lighter;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+
+    &::before {
+      @include material-icons;
+      content: 'expand_more';
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      color: $color-first;
+
+      @media (min-width: 340px) {
+        right: 10px;
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      border: 1px solid $color-first;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    cursor: text;
+    font: $default-text;
+    color: $color-first-darker;
+    text-overflow: ellipsis;
+
+    &::placeholder {
+      color: $color-first-lighter;
+    }
+
+    &:read-only {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    max-width: 44px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+
+    &::before {
+      @include material-icons;
+      content: 'arrow_forward';
+      background: $gradient-primary;
+      background-clip: text;
+      color: transparent;
+    }
+
+    &:hover {
+      opacity: .5;
+    }
+
+    &:focus-visible {
+      border: 1px solid $color-first;
+    }
+
+    &:active {
+      opacity: 1;
+      border: none;
+    }
+  }
+}

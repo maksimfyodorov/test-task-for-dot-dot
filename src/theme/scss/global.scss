@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fff;
+  font: $main-font-size $main-font;
+  color: $color-first-darker;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}

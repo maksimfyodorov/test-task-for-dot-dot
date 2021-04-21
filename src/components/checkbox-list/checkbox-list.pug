@@ -1,0 +1,17 @@
+include ../checkbox/checkbox
+
+mixin checkbox-list( {title, checkboxList = [], theme, isExpandable} = {} )
+  -
+    const themeModifiers = {
+      bullet: '_theme_bullet'
+    }
+    const expandableModifier = isExpandable && '_is-expandable'
+    const classes = [themeModifiers[theme], expandableModifier]
+
+  .checkbox-list.js-checkbox-list(class = classes)
+    h3.checkbox-list__title= title
+    ul.checkbox-list__list
+      each checkbox in checkboxList
+        - const {labelText, labelClarification, isChecked} = checkbox
+        li.checkbox-list__checkbox
+          +checkbox({labelText: labelText, labelClarification: labelClarification, isChecked: isChecked, theme: theme})

@@ -1,0 +1,27 @@
+mixin text-field( {title, type, name, value, placeholder, required, readonly, tabindex, hasButton, hasDropdownArrow, mask, isDateDropdown} = {} )
+  -
+    const classWithButton = hasButton && '_with-button'
+    const classWithDropdownArrow = hasDropdownArrow && '_with-dropdown-arrow'
+    const dateDropdown = isDateDropdown && '_with-dropdown-arrow'
+    const displayNoneClass = !title && '--none'
+    const maskModifiers = {
+      email: '_mask_email',
+      date: '_mask_date',
+    }
+    const classes = [classWithButton, classWithDropdownArrow, maskModifiers[mask], dateDropdown]
+    const inputAttributes = {
+      type: type,
+      name: name,
+      value: isDateDropdown ? 'ДД.ММ.ГГГГ' : value,
+      placeholder: mask === 'date' ? 'ДД.ММ.ГГГГ' : placeholder,
+      required: required,
+      readonly: isDateDropdown ? true : readonly,
+      tabindex: tabindex,
+    }
+
+  .text-field.js-text-field(class = classes)
+    h3.text-field__title(class = displayNoneClass)= title
+    .text-field__container
+      input.text-field__input.js-text-field__input&attributes(inputAttributes)
+      if hasButton
+        button.text-field__button(type="submit")

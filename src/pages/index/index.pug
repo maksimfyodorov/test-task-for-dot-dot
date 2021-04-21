@@ -1,0 +1,24 @@
+extends ../base/base
+include ../../components/header/header
+include ../../components/search-room-form/search-room-form
+include ../../components/footer/footer
+
+block variables
+    -
+        const lang = 'ru'
+        const title = 'Toxin Hotel'
+        const keywords = 'Toxin, hotel, index page, search room, главная страница сайта, поиск номеров'
+        const description = 'Главная страница сайта, где Вы можете выбрать даты пребывания, а мы подберём ноомер.'
+        const bodyClassName = 'i-page'
+
+block main
+    // abbreviation "i-page" means "index-page"
+    .i-page__header
+      +header()
+    main.i-page__content
+      .i-page__container
+        .i-page__form
+          +search-room-form({url: './room-filter.html'})
+        p.i-page__description Лучшие номера для вашей работы, отдыха и просто вдохновения
+    .i-page__footer
+      +footer()

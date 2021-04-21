@@ -1,0 +1,28 @@
+@import '../variables.scss';
+
+@mixin title {
+  font-family: $main-font;
+  font-weight: 700;
+  color: $color-first-darkest;
+}
+
+@mixin h1 {
+  @include title;
+  font-size: 1.7143rem;
+  letter-spacing: -0.0714rem;
+  line-height: 1.25;
+}
+
+@mixin h2 {
+  @include title;
+  font-size: 1.3571rem;
+  letter-spacing: -0.0714rem;
+  line-height: 1.2631;
+}
+
+@mixin h3 {
+  @include title;
+  font-size: .85714rem;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
