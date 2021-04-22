@@ -16,8 +16,7 @@ npm i
 And now make your decision how to run the project:
 | dev mode         | production mode |
 | ---------------- | ---------------- |
-| `npm run watch`    | `npm run build`  |
-| `npm run dev`    |   |
+| `npm run watch` or `npm run dev` | `npm run build`  |
 ## Built with:
 * HTML5
 * CSS3
