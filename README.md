@@ -3,11 +3,11 @@
 ## Getting started
 Clone repository:
 ```$xslt
-https://github.com/maksimfyodorov/test-task-for-dot-dot.git
+git clone https://github.com/maksimfyodorov/test-task-for-dot-dot.git
 ```
 Change directory:
 ```$xslt
-cd Dot-Dot-test-task
+cd test-task-for-dot-dot
 ```
 Install dependencies:
 ```$xslt
