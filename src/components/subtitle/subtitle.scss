@@ -1,0 +1,32 @@
+@import '../../theme/scss/variables.scss';
+
+.subtitle {
+  position: relative;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding-left: 33px;
+
+  @media (min-width: $large-tablet-width) {
+    font-size: 24px;
+  }
+
+  &__number {
+    position: absolute;
+    z-index: 1;
+    left: 8px;
+    top: -1px;
+    font-size: 16px;
+
+    &::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      position: absolute;
+      z-index: -1;
+      left: -7px;
+      background: $bg-color;
+    }
+  }
+}

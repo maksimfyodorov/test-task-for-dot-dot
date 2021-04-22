@@ -1,56 +1,54 @@
-@import '../../theme/scss/mixins/container.scss';
 @import '../../theme/scss/variables.scss';
 
 .i-page {
   &__content {
-    background-color: #e5cbbc;
-    background-image: url(./img/main-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    padding: 44px 15px 37px;
+    max-width: 1115px;
 
-    @media (min-width: $tablet-width) {
-      min-height: 830px;
+    @media (min-width: 758px) {
+      display: grid;
+      grid-template-columns: 1fr 356px;
+      grid-gap: 16px;
+    }
+
+    @media (min-width: $large-tablet-width) {
+      padding-left: 0;
+      margin-left: 170px;
     }
   }
 
-  &__container {
-    @include container;
-    padding-top: 70px;
-    padding-bottom: 21px;
-    min-height: inherit;
-    position: relative;
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 22px;
+
+    @media (min-width: 758px) {
+      grid-column-end: span 2;
+    }
+
+    @media (min-width: $large-tablet-width) {
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
   }
 
   &__form {
-    max-width: 380px;
-    margin: 0 auto;
-
-    @media (min-width: $large-phone-width) {
-      margin: 0;
-    }
+    margin-bottom: 40px;
   }
 
   &__description {
-    text-align: center;
-    max-width: 380px;
-    margin: 40px auto 0;
+    max-width: 356px;
+    min-height: 100px;
+    height: min-content;
+    padding: 24px;
+    padding-top: 26px;
+    background: #4B4B4F;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
 
-    @media (min-width: $large-phone-width) {
-      text-align: right;
-      max-width: 200px;
-      margin: 40px 0 0 auto;
-    }
-
-    @media (min-width: 730px) {
-      max-width: 300px;
-    }
-
-    @media (min-width: $tablet-width) {
-      position: absolute;
-      bottom: 21px;
-      right: 15px;
-      margin: 0;
+    @media (min-width: $large-tablet-width) {
+      margin-top: -8px;
+      padding-right: 27px;
     }
   }
 }

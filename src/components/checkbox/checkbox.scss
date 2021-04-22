@@ -1,83 +1,38 @@
 @import '../../theme/scss/variables.scss';
-@import '../../theme/scss/mixins/visually-hidden.scss';
 
 .checkbox {
-  $r: &;
-  max-width: 290px;
-  padding-left: 30px;
-
-  &._with-description {
-    #{$r}__label {
-      font-weight: 700;
-      color: $color-first-darker;
-    }
-  }
-
-  &._theme_bullet {
-    padding-left: 22px;
-
-    #{$r}__label {
-      cursor: default;
-      color: $color-first-darker;
-      line-height: 1.648;
-    }
-
-    #{$r}__input {
-      cursor: default;
-
-      &::before {
-        top: 3px;
-        left: -21px;
-        width: 10px;
-        height: 10px;
-        background: $color-first-lighter;
-        border: none;
-        border-radius: 50%;
-      }
-    }
-  }
-
-  &__label {
-    position: relative;
-    user-select: none;
-    cursor: pointer;
-    color: $color-first;
-  }
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+  padding-left: 36px;
+  cursor: pointer;
 
   &__input {
     width: 0;
-	  height: 0;
+    height: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
 
     &::before {
       position: absolute;
+      top: -4px;
+      left: 1px;
       content: '';
-      top: -1px;
-      left: -30px;
-      width: 20px;
-      height: 20px;
-      background: #FFFFFF;
-      border: 1px solid $color-first-lighter;
-      border-radius: 4px;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: .5s;
     }
 
     &:checked::before {
+      background: $bg-color;
       content: url(./img/tick.svg);
-      border: 1px solid $color-second;
+      border: none;
+      transition: .5s;
     }
-
-    &:focus::before {
-      border: 1px solid $color-second;
-    }
-  }
-
-  &__description {
-    font-size: 12px;
-    color: $color-first;
-    max-width: 223px;
-    white-space: pre-wrap;
-    margin-top: 6px;
   }
 }

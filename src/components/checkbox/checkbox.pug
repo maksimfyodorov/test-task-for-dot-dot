@@ -1,21 +1,10 @@
-mixin checkbox( {labelText, labelClarification, description, isChecked, theme} = {} )
+mixin checkbox( {label = 'Требуется температурный режим', name = 'temperature-control', isChecked} = {} )
   -
-    const classWithDescription = description && '_with-description'
-    const themeModifiers = {
-      bullet: '_theme_bullet'
-    }
-    const classes = [classWithDescription, themeModifiers[theme]]
     const inputAttributes = {
       type: 'checkbox',
-      checked: isChecked,
-      disabled: theme === 'bullet'
+      name: name,
+      checked: isChecked
     }
 
-  .checkbox(class = classes)
-    label.checkbox__label= labelText
-      if labelClarification
-        br
-        | #{labelClarification}
-      input.checkbox__input&attributes(inputAttributes)
-    if description
-      p.checkbox__description= description
+  label.checkbox= label
+    input.checkbox__input&attributes(inputAttributes)

@@ -1,39 +1,38 @@
-import Inputmask from 'inputmask'
+import autosize from 'autosize'
+autosize(document.querySelectorAll('textarea'))
 
 class TextField {
   constructor(element) {
-    this.element = element
+    this.textField = element
     this._init()
   }
 
   _init() {
-    this._setEmailMask()
-    this._setDateMask()
+    this._getDomElements()
+    this._addEvents()
   }
 
-  _setEmailMask() {
-    if (this.element.matches('._mask_email')) {
-      const input = this.element.querySelector('.js-text-field__input')
-      const im = new Inputmask('email', {
-        mask: "*{3,20}@*{3,20}.*{2,7}"
-      })
+  _getDomElements() {
+    this.input = this.textField.querySelector('.text-field__container')
+  }
 
-      im.mask(input)
+  _addEvents() {
+    this.input.addEventListener('click', this._handleInputClick.bind(this))
+    this.input.addEventListener('mouseleave', this._handleInputLeave.bind(this))
+  }
+
+  _handleInputClick(event) {
+    event.preventDefault()
+    const {target} = event
+    this.textField.classList.toggle('_expanded')
+    if (target.matches('.text-field__option')) {
+      this.input.querySelector('.text-field__input').value =  target.innerText
+      this.textField.classList.remove('_expanded')
     }
   }
 
-  _setDateMask() {
-    if (this.element.matches('._mask_date')) {
-      const input = this.element.querySelector('.js-text-field__input')
-      const im = new Inputmask('datetime', {
-        inputFormat: 'dd.mm.yyyy',
-        placeholder: 'ДД.ММ.ГГГГ',
-        min: '01.01.1900',
-        max: '01.01.2021',
-      })
-
-      im.mask(input)
-    }
+  _handleInputLeave() {
+    this.textField.classList.remove('_expanded')
   }
 }
 

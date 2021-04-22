@@ -1,0 +1,103 @@
+{
+  "formSections": [
+    {
+      "subtitle": "Маршрут",
+      "subtitleNumber": "1",
+      "textFields": [
+        {
+          "label": "Откуда"
+        },{
+          "label": "Куда",
+          "name": "route-to"
+        }
+      ]
+    },{
+      "isHorizontal": true,
+      "subtitle": "Транспорт",
+      "subtitleNumber": "2",
+      "textFields": [
+        {
+          "label": "Грузоподъёмность",
+          "name": "carrying",
+          "placeholder": "Не выбрана",
+          "hasArrow": true,
+          "textFieldOptions": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5"]
+        },{
+          "label": "Способ погрузки",
+          "name": "loading-method",
+          "value": "Задняя",
+          "placeholder": "Не выбран",
+          "hasArrow": true,
+          "textFieldOptions": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5"]
+        }
+      ]
+    },{
+      "isHorizontal": true,
+      "subtitle": "Груз",
+      "subtitleNumber": "3",
+      "textFields": [
+        {
+          "itemModifier": "large",
+          "label": "Тип груза",
+          "name": "cargo",
+          "placeholder": "Не выбран",
+          "hasArrow": true,
+          "textFieldOptions": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5"]
+        },{
+          "itemModifier": "hidden",
+          "label": "Класс опасности",
+          "name": "hazard-value",
+          "value": "Класс 5 — Окисляющие вещества и органические перекиси",
+          "hasArrow": true,
+          "textFieldOptions": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5"]
+        },{
+          "label": "Объявленная ценность, ₽",
+          "name": "cargo-value",
+          "placeholder": "≥ 1",
+          "textFieldOptions": ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5"]
+        }
+      ],
+      "hasCheckbox": true,
+      "hiddenSection": [
+        {
+          "label": "От, °C",
+          "name": "temperature-from",
+          "value": "-20",
+          "placeholder": "0"
+        },{
+          "label": "До, °C",
+          "name": "temperature-to",
+          "value": "+23",
+          "placeholder": "0"
+        }
+      ]
+    },{
+      "theme": "dark",
+      "subtitle": "Время",
+      "subtitleNumber": "4",
+      "textFields": [
+        {
+          "theme": "dark",
+          "label": "Когда прибыть на точку",
+          "name": "address-from",
+          "placeholder": "Длинный адрес с градиентом",
+          "distancePerDay": "700 км в день"
+        },{
+          "theme": "dark",
+          "name": "address-to",
+          "placeholder": "Адрес не указан"
+        }
+      ]
+    },{
+      "theme": "textarea",
+      "textFields": [
+        {
+          "tag": "textarea",
+          "label": "Комментарий к заказу",
+          "placeholder": "Укажите особенности въезда на территорию склада или подъезда к адресу"
+        }
+      ]
+    }
+  ],
+  "pageDescription": "Для расчета стоимости необходимо ввести параметры груза, пункты отправки и прибытия."
+}

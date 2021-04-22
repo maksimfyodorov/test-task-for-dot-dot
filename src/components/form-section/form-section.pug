@@ -1,0 +1,33 @@
+include ../subtitle/subtitle
+include ../text-field/text-field
+include ../checkbox/checkbox
+
+mixin form-section( {isHorizontal, theme, subtitle, subtitleNumber, textFields = [], hasCheckbox, hiddenSection = []} = {} )
+  -
+    const horizontalDirectionModifier = isHorizontal && '_is-horizontal'
+    const themeModifiers = {
+      dark: '_theme_dark',
+      textarea: '_theme_textarea'
+    }
+    const classes = [horizontalDirectionModifier, themeModifiers[theme]]
+
+  section.form-section(class = classes)
+    if subtitle
+      .form-section__title
+        +subtitle({subtitle: subtitle, subtitleNumber: subtitleNumber})
+    each textField in textFields
+      -
+        const {itemModifier} = textField
+        const itemModifiers = {
+          large: '_is-large',
+          hidden: '_hidden'
+        }
+        const classes = [itemModifiers[itemModifier]]
+      .form-section__text-field(class = classes)
+        +text-field(textField)
+    if hasCheckbox
+      .form-section__checkbox
+        +checkbox()
+      each textField in hiddenSection
+        .form-section__text-field._is-one-of-hidden-section
+          +text-field(textField)

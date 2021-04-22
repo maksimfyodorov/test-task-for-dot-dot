@@ -1,9 +1,0 @@
-mixin heading( {level, title = 'Some title', font} = {} )
-  -
-    const levels = [1, 2, 3, 4, 5, 6]
-    const headingLevel = levels.includes(level) ? level : 3
-    const tagName = `h${headingLevel}`
-    const headingLevelModifier = `_level_${headingLevel}`
-    const fontModifier = font && `_font_${font}`
-
-  #{tagName}.heading(class= [headingLevelModifier, fontModifier])= title

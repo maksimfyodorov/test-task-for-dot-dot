@@ -1,24 +1,23 @@
 extends ../base/base
-include ../../components/header/header
-include ../../components/search-room-form/search-room-form
-include ../../components/footer/footer
+include ../../components/subtitle/subtitle
+include ../../components/text-field/text-field
+include ../../components/checkbox/checkbox
+include ../../components/form-section/form-section
 
 block variables
-    -
-        const lang = 'ru'
-        const title = 'Toxin Hotel'
-        const keywords = 'Toxin, hotel, index page, search room, главная страница сайта, поиск номеров'
-        const description = 'Главная страница сайта, где Вы можете выбрать даты пребывания, а мы подберём ноомер.'
-        const bodyClassName = 'i-page'
+  -
+    const lang = 'ru'
+    const title = 'Test'
+    const keywords = 'тестовое задание, компания "Точка-Точка"'
+    const description = 'тестовое задание для компании "Точка-Точка"'
+    const bodyClassName = 'i-page'
+    const {formSections, pageDescription} = htmlWebpackPlugin.options.getData()
 
 block main
-    // abbreviation "i-page" means "index-page"
-    .i-page__header
-      +header()
-    main.i-page__content
-      .i-page__container
-        .i-page__form
-          +search-room-form({url: './room-filter.html'})
-        p.i-page__description Лучшие номера для вашей работы, отдыха и просто вдохновения
-    .i-page__footer
-      +footer()
+  // abbreviation "i-page" means "index-page"
+  main.i-page__content
+    h1.i-page__title FTL: Прямая машина
+    form.i-page__form
+      each section in formSections
+        +form-section(section)
+    p.i-page__description= pageDescription

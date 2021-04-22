@@ -7,9 +7,11 @@
 }
 
 html {
-  background: #fff;
-  font: $main-font-size $main-font;
-  color: $color-first-darker;
+  background: #343539;
+  font-family: $main-font;
+  font-weight: 400;
+  font-size: $main-font-size;
+  color: $title-color;
   scroll-behavior: smooth;
 }
 

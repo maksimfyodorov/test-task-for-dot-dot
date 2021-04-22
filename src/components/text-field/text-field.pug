@@ -1,27 +1,35 @@
-mixin text-field( {title, type, name, value, placeholder, required, readonly, tabindex, hasButton, hasDropdownArrow, mask, isDateDropdown} = {} )
+mixin text-field( {tag, label, type = 'text', name = 'route-from', value, placeholder, required, tabindex, hasArrow, theme, textFieldOptions = [], darkThemeNotification = 'не выбрано', distancePerDay} = {} )
   -
-    const classWithButton = hasButton && '_with-button'
-    const classWithDropdownArrow = hasDropdownArrow && '_with-dropdown-arrow'
-    const dateDropdown = isDateDropdown && '_with-dropdown-arrow'
-    const displayNoneClass = !title && '--none'
-    const maskModifiers = {
-      email: '_mask_email',
-      date: '_mask_date',
+    const hasArrowModifier = hasArrow && '_has-arrow'
+    const tags = ['input', 'textarea']
+    const tagName = tags.includes(tag) ? tag : 'input'
+    const isTextarea = tag === 'textarea'
+    const isTextareaModifier = isTextarea && '_is-textarea'
+    const themeModifiers = {
+      dark: '_theme_dark'
     }
-    const classes = [classWithButton, classWithDropdownArrow, maskModifiers[mask], dateDropdown]
+    const classes = [themeModifiers[theme], hasArrowModifier, isTextareaModifier]
+    const isDarkTheme = theme === 'dark'
     const inputAttributes = {
-      type: type,
-      name: name,
-      value: isDateDropdown ? 'ДД.ММ.ГГГГ' : value,
-      placeholder: mask === 'date' ? 'ДД.ММ.ГГГГ' : placeholder,
+      type: !isTextarea && type,
+      name: isTextarea ? 'textarea' : name,
+      value: value,
+      placeholder: placeholder,
       required: required,
-      readonly: isDateDropdown ? true : readonly,
+      readonly: hasArrow && true,
       tabindex: tabindex,
     }
 
-  .text-field.js-text-field(class = classes)
-    h3.text-field__title(class = displayNoneClass)= title
+  label.text-field(class = classes)
+    if label
+      span.text-field__label= label
     .text-field__container
-      input.text-field__input.js-text-field__input&attributes(inputAttributes)
-      if hasButton
-        button.text-field__button(type="submit")
+      #{tagName}.text-field__input()&attributes(inputAttributes)
+      if hasArrow
+        ul.text-field__options
+          each option in textFieldOptions
+            li.text-field__option= option
+      if isDarkTheme
+        span.text-field__notification= darkThemeNotification
+        if distancePerDay
+          span.text-field__distance-per-day= distancePerDay

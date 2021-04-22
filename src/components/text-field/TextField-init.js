@@ -1,7 +1,8 @@
 import TextField from './TextField'
 
-const textFields = document.querySelectorAll('.js-text-field')
+const allTextFields = Array.from(document.querySelectorAll('.text-field'))
+const expandableTextFields = allTextFields.filter(el => el.matches('._has-arrow'))
 
-textFields.forEach(textField => {
+expandableTextFields.forEach(textField => {
   new TextField(textField)
 })

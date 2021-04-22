@@ -1,7 +1,9 @@
-@import '../variables.scss';
-
 @mixin material-icons {
-  font: normal 400  1.7143rem / 1 'Material Icons';
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
   display: inline-block;
   text-transform: none;
   user-select: none;
