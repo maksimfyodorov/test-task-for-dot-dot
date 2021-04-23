@@ -1,4 +1,4 @@
-mixin text-field( {tag, label, type = 'text', name = 'route-from', value, placeholder, required, tabindex, hasArrow, theme, textFieldOptions = [], darkThemeNotification = 'не выбрано', distancePerDay} = {} )
+mixin text-field( {tag, label, type = 'text', name = 'route-from', value, placeholder, required = true, tabindex, hasArrow, theme, textFieldOptions = [], darkThemeNotification = 'не выбрано', distancePerDay} = {} )
   -
     const hasArrowModifier = hasArrow && '_has-arrow'
     const tags = ['input', 'textarea']
@@ -15,7 +15,7 @@ mixin text-field( {tag, label, type = 'text', name = 'route-from', value, placeh
       name: isTextarea ? 'textarea' : name,
       value: value,
       placeholder: placeholder,
-      required: required,
+      required: isTextarea ? false : required,
       readonly: hasArrow && true,
       tabindex: tabindex,
     }

@@ -11,13 +11,13 @@ block variables
     const keywords = 'тестовое задание, компания "Точка-Точка"'
     const description = 'тестовое задание для компании "Точка-Точка"'
     const bodyClassName = 'i-page'
-    const {formSections, pageDescription} = htmlWebpackPlugin.options.getData()
+    const {formSections, buttonText} = htmlWebpackPlugin.options.getData()
 
 block main
   // abbreviation "i-page" means "index-page"
   main.i-page__content
     h1.i-page__title FTL: Прямая машина
-    form.i-page__form
+    form.i-page__form(id="form" action="" method="")
       each section in formSections
         +form-section(section)
-    p.i-page__description= pageDescription
+    button.i-page__button(form="form" type="submit")= buttonText

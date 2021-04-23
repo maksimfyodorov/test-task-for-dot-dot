@@ -36,7 +36,7 @@
     margin-bottom: 40px;
   }
 
-  &__description {
+  &__button {
     max-width: 356px;
     min-height: 100px;
     height: min-content;
@@ -45,10 +45,21 @@
     background: #4B4B4F;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     line-height: 18px;
+    text-align: left;
 
     @media (min-width: $large-tablet-width) {
       margin-top: -8px;
-      padding-right: 27px;
+      padding-right: 31px;
+      padding-top: 27px;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: .7;
+    }
+
+    &:active {
+      opacity: 1;
     }
   }
 }
